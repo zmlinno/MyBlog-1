@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        //相当于创建了一个表容器
         const formData = new FormData();
         formData.append("file", file);
 
