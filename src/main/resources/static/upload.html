@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传与展示</title>
+    <link rel="stylesheet" href="/css/upload.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>图片上传与展示</h1>
+            <p>选择、上传、保存您的精彩瞬间</p>
+        </header>
+
+        <div class="upload-controls">
+            <div class="file-input-wrapper">
+                <button class="btn btn-primary-outline" id="customFileBtn">选择文件</button>
+                <span id="fileName">未选择任何文件</span>
+                <input type="file" id="fileInput" accept="image/*" />
+            </div>
+            <div>
+                <button class="btn btn-primary" id="uploadBtn">上传</button>
+                <button class="btn btn-secondary" id="saveBtn">保存全部</button>
+            </div>
+        </div>
+
+        <p id="resultMsg"></p>
+        <hr>
+        <div id="image-gallery">
+            <!-- 图片将通过JS动态加载到这里 -->
+             <!--这个代码是展示容器中的照片，比如说一打开就有保存的照片-->
+        </div>
+    </div>
+
+    <!-- 引入外部 JS 文件 -->
+    <script src="/js/upload.js"></script>
+</body>
+</html>
