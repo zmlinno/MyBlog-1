@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>亲子互动小游戏/测评</title>
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>亲子互动小游戏/测评</h1>
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="showTab('quiz')">亲子答题</button>
+            <button class="tab-btn" onclick="showTab('test')">성격 테스트</button>
+            <button class="tab-btn" onclick="showTab('puzzle')">퍼즐 게임</button>
+            <button class="tab-btn" onclick="showTab('plane')">비행 게임</button>
+        </div>
+        <div id="quizTab" class="tab-content">
+            <div id="quizArea"></div>
+            <button id="nextQuizBtn" style="display:none;">다음 문제</button>
+            <div id="quizResult"></div>
+        </div>
+        <div id="testTab" class="tab-content" style="display:none;">
+            <div id="testArea"></div>
+            <button id="nextTestBtn" style="display:none;">다음 문제</button>
+            <div id="testResult"></div>
+        </div>
+        <div id="puzzleTab" style="display:none;">
+            <h2>퍼즐 게임</h2>
+            <div id="puzzleBoard" style="width:320px;height:320px;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);gap:2px;"></div>
+            <button onclick="resetPuzzle()">다시 시작</button>
+            <div id="puzzleMsg"></div>
+        </div>
+        <div id="planeTab" style="display:none;">
+            <h2>비행기 게임</h2>
+            <canvas id="planeGame" width="320" height="480" style="background:#222;border-radius:10px;box-shadow:0 2px 12px #000;margin:20px 0;"></canvas>
+            <div>
+                <button onclick="startPlaneGame()">게임 시작</button>
+                <span id="planeScore" style="color:#fff;margin-left:20px;">점수: 0</span>
+            </div>
+            <div id="planeMsg" style="color:#ff0;margin-top:10px;"></div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</body>
+</html>

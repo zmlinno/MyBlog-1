@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>가계부</title>
+    <link rel="stylesheet" href="css/account.css">
+</head>
+<body>
+    <div class="account-container">
+        <h1>가계부 관리</h1>
+        <div class="account-form">
+            <input type="date" id="dateInput" required>
+            <input type="text" id="descInput" placeholder="수익 설명" required>
+            <input type="number" id="amountInput" placeholder="금액" required>
+            <select id="typeInput">
+                <option value="收入">수익</option>
+                <option value="支出">지출</option>
+            </select>
+            <button id="addBtn">추가 기록</button>
+        </div>
+        <div class="account-list" id="accountList"></div>
+        <div class="account-summary" id="accountSummary"></div>
+    </div>
+    <script src="js/account.js"></script>
+</body>
+</html>

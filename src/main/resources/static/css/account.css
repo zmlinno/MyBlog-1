@@ -1,0 +1,68 @@
+body {
+    background: linear-gradient(135deg, #f5f6fa 60%, #e0e7ff 100%);
+    min-height: 100vh;
+    font-family: 'Noto Sans SC', Arial, sans-serif;
+}
+.account-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 36px 36px 40px 36px;
+    position: relative;
+}
+h1 {
+    text-align: center;
+    color: #3a405a;
+    margin-bottom: 30px;
+}
+.account-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+.account-form input, .account-form select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1.5px solid #bfc4d6;
+    font-size: 1em;
+}
+#addBtn {
+    background: #4f8cff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-size: 1em;
+    cursor: pointer;
+}
+#addBtn:hover { background: #357ae8; }
+.account-list {
+    margin-top: 20px;
+}
+.account-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.account-item .delete-btn {
+    background: #e84118;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+.account-summary {
+    margin-top: 30px;
+    font-size: 1.2em;
+    color: #232946;
+    text-align: right;
+}

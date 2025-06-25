@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>육아 문장</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+<div class="article-container">
+    <h1>육아 문장</h1>
+    <div id="articleList"></div>
+    <button id="showPublishBtn">문장 발표</button>
+    <div id="publishForm" style="display:none;">
+        <h2>새로운 문장 발표</h2>
+        <input id="articleTitle" placeholder="标题"><br>
+        <input id="articleType" placeholder="类型(如育儿、心得、推荐)"><br>
+        <input id="articleAuthor" placeholder="저자"><br>
+        <textarea id="articleContent" placeholder="内容" rows="6"></textarea><br>
+        <button id="publishBtn">발표</button>
+        <button id="cancelPublishBtn">취소</button>
+    </div>
+    <div id="articleDetailModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeDetailBtn">&times;</span>
+            <div id="articleDetail"></div>
+            <div id="favoriteArea"></div>
+            <h3>댓글</h3>
+            <div id="commentList"></div>
+            <input id="commentUser" placeholder="你的昵称"><br>
+            <textarea id="commentContent" placeholder="写下你的评论..." rows="2"></textarea><br>
+            <button id="commentBtn">댓글 남겨</button>
+        </div>
+    </div>
+</div>
+<script src="js/article.js"></script>
+</body>
+</html> 
