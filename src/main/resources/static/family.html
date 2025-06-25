@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>家庭成员管理</title>
+    <link rel="stylesheet" href="css/family.css">
+</head>
+<body>
+    <div class="family-container">
+        <!-- 挂件装饰 -->
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker1" alt="sticker">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker2" alt="sticker">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker3" alt="sticker">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker4" alt="sticker">
+        <h1>家庭成员管理</h1>
+        <button class="add-btn" id="addMemberBtn">添加成员</button>
+        <div class="member-list" id="memberList"></div>
+        <!-- 添加成员弹窗 -->
+        <div class="modal" id="addModal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>添加家庭成员</h2>
+                <form id="addMemberForm">
+                    <label>姓名：<input type="text" id="memberName" required></label><br>
+                    <label>关系：<input type="text" id="memberRelation" required></label><br>
+                    <label>生日：<input type="date" id="memberBirthday"></label><br>
+                    <label>照片：<input type="file" id="memberPhoto" accept="image/*"></label><br>
+                    <button type="submit">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/family.js"></script>
+</body>
+</html> 

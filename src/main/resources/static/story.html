@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Story</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/story.css">
+</head>
+<body>
+    <div class="main-box">
+        <!-- 挂件装饰 -->
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker1" alt="sticker">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker2" alt="sticker">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker3" alt="sticker">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" class="sticker sticker4" alt="sticker">
+        <div class="top-bar">
+            <button class="btn" id="writeBtn">写日记</button>
+            <button class="btn" id="manageBtn">管理日记</button>
+        </div>
+        <div class="center-content">
+            <!-- 日记表单 -->
+            <form class="diary-form" id="diaryForm" style="display:none;">
+                <div>
+                    <label for="diaryTitle">日记名称</label>
+                    <input type="text" id="diaryTitle" maxlength="30" placeholder="请输入日记名称">
+                </div>
+                <div>
+                    <label for="diaryContent">内容</label>
+                    <textarea id="diaryContent" placeholder="写下你的故事..." style="font-size:18px;"></textarea>
+                </div>
+                <button type="button" class="btn save-btn" id="saveBtn">保存</button>
+            </form>
+            <!-- 日记列表 -->
+            <div class="diary-list" id="diaryList"></div>
+        </div>
+    </div>
+    <script>
+        let isManageMode = false;
+        let editId = null;
+
+        // 显示写日记表单
+        document.getElementById('writeBtn').onclick = function() {
+            document.getElementById('diaryForm').style.display = 'flex';
+            document.getElementById('diaryTitle').value = '';
+            document.getElementById('diaryContent').value = '';
+            editId = null;
+        };
+
+        // 管理日记模式切换
+        document.getElementById('manageBtn').onclick = function() {
+            isManageMode = !isManageMode;
+            renderDiaries();
+        };
+
+        // 保存日记
+        document.getElementById('saveBtn').onclick = function() {
+            const title = document.getElementById('diaryTitle').value.trim();
+            const content = document.getElementById('diaryContent').value.trim();
+            if (!title || !content) return alert('名称和内容不能为空');
+            const diaryData = { content: `<b>${title}</b><br>${content}` };
+            if (editId) {
+                fetch(`/api/diary/${editId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(diaryData)
+                }).then(() => {
+                    document.getElementById('diaryForm').style.display = 'none';
+                    renderDiaries();
+                });
+            } else {
+                fetch('/api/diary', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(diaryData)
+                }).then(() => {
+                    document.getElementById('diaryForm').style.display = 'none';
+                    renderDiaries();
+                });
+            }
+        };
+
+        // 渲染日记列表
+        function renderDiaries() {
+            fetch('/api/diary')
+                .then(res => res.json())
+                .then(diaries => {
+                    const list = document.getElementById('diaryList');
+                    if (!diaries.length) {
+                        list.innerHTML = '<p>暂无日记</p>';
+                        return;
+                    }
+                    list.innerHTML = diaries.map(d => `
+                        <div class="diary-card">
+                            <div class="diary-content">${d.content}</div>
+                            <div class="diary-date">${d.createTime ? d.createTime.replace('T', ' ').substring(0, 16) : ''}</div>
+                            ${isManageMode ? `
+                                <div class="diary-actions">
+                                    <button class="edit-btn" onclick="editDiary(${d.id})">修改</button>
+                                    <button onclick="deleteDiary(${d.id})">删除</button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `).join('');
+                });
+        }
+
+        // 修改日记
+        window.editDiary = function(id) {
+            fetch(`/api/diary`)
+                .then(res => res.json())
+                .then(diaries => {
+                    const d = diaries.find(item => item.id === id);
+                    if (d) {
+                        // 修正正则
+                        const match = d.content.match(/^<b>(.*?)<\/b><br>([\s\S]*)$/);
+                        let title = '', content = '';
+                        if (match) {
+                            title = match[1];
+                            content = match[2];
+                        }
+                        document.getElementById('diaryTitle').value = title;
+                        document.getElementById('diaryContent').value = content;
+                        document.getElementById('diaryForm').style.display = 'flex';
+                        editId = id;
+                    }
+                });
+        };
+
+        // 删除日记
+        window.deleteDiary = function(id) {
+            if (!confirm('确定要删除这篇日记吗？')) return;
+            fetch(`/api/diary/${id}`, { method: 'DELETE' })
+                .then(() => renderDiaries());
+        };
+
+        // 初始化
+        renderDiaries();
+    </script>
+</body>
+</html>

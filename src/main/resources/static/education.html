@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>幼儿教育</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/education.css">
+
+</head>
+<body>
+    <div class="edu-container">
+        <h1>幼儿教育知识</h1>
+        <div class="api-content" id="apiContent">正在加载育儿知识...</div>
+        <button class="refresh-btn" onclick="fetchEducation()">换一条</button>
+    </div>
+    <script>
+        // 示例API（你可以替换为真实的育儿教育API）
+        const apiList = [
+            "每天和孩子一起阅读10分钟，有助于语言发展。",
+            "多带孩子户外活动，增强体质和探索能力。",
+            "尊重孩子的兴趣，鼓励他们表达自己的想法。",
+            "培养孩子良好的作息习惯，有助于身心健康。",
+            "用积极的语言和孩子沟通，建立自信心。"
+        ];
+
+        function fetchEducation() {
+            // 模拟API随机返回一条
+            const idx = Math.floor(Math.random() * apiList.length);
+            document.getElementById('apiContent').innerText = apiList[idx];
+        }
+
+        // 页面加载时自动拉取
+        fetchEducation();
+    </script>
+</body>
+</html>

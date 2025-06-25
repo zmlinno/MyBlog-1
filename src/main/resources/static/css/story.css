@@ -1,0 +1,152 @@
+body {
+    background: linear-gradient(135deg, #f5f6fa 60%, #e0e7ff 100%);
+    min-height: 100vh;
+    font-family: 'Noto Sans SC', Arial, sans-serif;
+}
+.main-box {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    border: 3px solid #232946;
+    position: relative;
+    padding: 48px 48px 60px 48px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.btn {
+    border: 2px solid #232946;
+    background: #fff;
+    color: #232946;
+    font-size: 1.3em;
+    border-radius: 6px;
+    padding: 12px 36px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.btn:hover {
+    background: #232946;
+    color: #fff;
+}
+.diary-form {
+    border: 2px solid #232946;
+    border-radius: 8px;
+    padding: 24px 24px 16px 24px;
+    background: #f8f9fa;
+    margin: 0 auto 24px auto;
+    max-width: 700px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+}
+.diary-form label {
+    font-size: 1.1em;
+    color: #232946;
+    margin-bottom: 4px;
+}
+.diary-form input[type=text] {
+    width: 100%;
+    font-size: 1.1em;
+    padding: 8px 10px;
+    border: 1.5px solid #bfc4d6;
+    border-radius: 4px;
+}
+.diary-form textarea {
+    width: 100%;
+    min-height: 220px;
+    font-size: 1.1em;
+    padding: 10px;
+    border: 1.5px solid #bfc4d6;
+    border-radius: 4px;
+    resize: vertical;
+}
+.diary-form .save-btn {
+    position: absolute;
+    left: 18px;
+    bottom: 14px;
+    padding: 8px 28px;
+    font-size: 1.1em;
+}
+.diary-list {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: flex-start;
+}
+.diary-card {
+    background: #f8f9fa;
+    border: 1.5px solid #bfc4d6;
+    border-radius: 8px;
+    width: 260px;
+    min-height: 120px;
+    padding: 16px 14px 10px 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.diary-title {
+    font-weight: bold;
+    color: #232946;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+.diary-content {
+    color: #444;
+    font-size: 1em;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+.diary-date {
+    color: #888;
+    font-size: 0.95em;
+}
+.diary-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.diary-actions button {
+    background: #e84118;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+.diary-actions button.edit-btn {
+    background: #4f8cff;
+}
+/* 挂件装饰 */
+.sticker {
+    position: absolute;
+    width: 60px;
+    opacity: 0.7;
+}
+.sticker1 { left: -30px; top: -30px; transform: rotate(-15deg);}
+.sticker2 { right: -30px; top: -30px; transform: rotate(10deg);}
+.sticker3 { left: -30px; bottom: -30px; transform: rotate(8deg);}
+.sticker4 { right: -30px; bottom: -30px; transform: rotate(-10deg);}
+.center-content {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}

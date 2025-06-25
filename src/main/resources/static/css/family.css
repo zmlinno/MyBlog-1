@@ -1,0 +1,134 @@
+body {
+    background: linear-gradient(135deg, #f5f6fa 60%, #e0e7ff 100%);
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Noto Sans SC', Arial, sans-serif;
+}
+
+.family-container {
+    max-width: 900px;
+    margin: 60px auto 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(80,120,200,0.10);
+    padding: 36px 36px 40px 36px;
+    position: relative;
+}
+
+.family-container h1 {
+    text-align: center;
+    color: #3a405a;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.add-btn {
+    display: block;
+    margin: 0 auto 24px auto;
+    background: #4f8cff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 28px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.add-btn:hover { background: #357ae8; }
+
+.member-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 32px;
+    justify-items: center;
+}
+
+.member-card {
+    background: #f8f9fa;
+    border: 2px solid #bfc4d6;
+    border-radius: 12px;
+    width: 320px;
+    min-height: 140px;
+    padding: 18px 14px 14px 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-photo {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2.5px solid #4f8cff;
+}
+
+.member-info {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.member-actions {
+    margin-top: 8px;
+}
+
+.member-actions button {
+    background: #e84118;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.member-actions button.edit-btn {
+    background: #4f8cff;
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+/* 弹窗样式 */
+.modal {
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    min-width: 320px;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 1.5em;
+    color: #888;
+    cursor: pointer;
+}
+
+/* 挂件装饰 */
+.sticker {
+    position: absolute;
+    width: 60px;
+    opacity: 0.7;
+    z-index: 10;
+    pointer-events: none;
+}
+.sticker1 { left: -30px; top: -30px; transform: rotate(-15deg);}
+.sticker2 { right: -30px; top: -30px; transform: rotate(10deg);}
+.sticker3 { left: -30px; bottom: -30px; transform: rotate(8deg);}
+.sticker4 { right: -30px; bottom: -30px; transform: rotate(-10deg);} 

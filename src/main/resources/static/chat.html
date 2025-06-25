@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>育儿智能对话</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
+   
+</head>
+<body>
+    <div class="chat-container">
+        <h1>育儿智能对话</h1>
+        <div class="chat-history" id="chatHistory"></div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="请输入你的育儿问题..." />
+            <button onclick="sendMessage()">发送</button>
+        </div>
+    </div>
+    <script>
+        const chatHistory = document.getElementById('chatHistory');
+        const userInput = document.getElementById('userInput');
+
+        function appendMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = 'chat-msg ' + role;
+            div.innerText = (role === 'user' ? '你：' : 'AI：') + text;
+            chatHistory.appendChild(div);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const question = userInput.value.trim();
+            if (!question) return;
+            appendMessage('user', question);
+            userInput.value = '';
+            appendMessage('ai', '思考中...');
+            // 调用 OpenAI API
+            try {
+                const response = await fetch('/api/ai/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question })
+                });
+                const answer = await response.text();
+                chatHistory.removeChild(chatHistory.lastChild);
+                appendMessage('ai', answer);
+            } catch (e) {
+                chatHistory.removeChild(chatHistory.lastChild);
+                appendMessage('ai', 'AI服务暂时不可用，请稍后再试。');
+            }
+        }
+
+        // 回车发送
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>
